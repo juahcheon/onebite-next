@@ -31,7 +31,7 @@ export default function Home({
     <>
     <Head>
       <title>한입북스</title>
-      <meta property="og:image" content="/thumbnail.png" />
+      <meta property="og:image" content="/public/thumbnail.png" />
       <meta property="og:title" content="한입북스" />
       <meta property="og:description" content="한입북스에 등록된 도서들을 만나보세요" />
     </Head>
