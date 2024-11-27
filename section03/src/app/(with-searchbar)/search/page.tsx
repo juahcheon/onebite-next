@@ -1,3 +1,5 @@
+import ClientComponent from "@/components/client-component";
+
 export default async function page({
   searchParams,
 }: {
@@ -6,6 +8,9 @@ export default async function page({
   const { q } = await searchParams;
   return (
     <div>search page : {q}</div>
+    <ClientComponent>
+      <></>
+    </ClientComponent>
   )
 }
 
