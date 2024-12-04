@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import style from "./page.module.css";
 
 export function generateStaticParams() {
@@ -14,6 +15,9 @@ export default async function Page({
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`);
 
   if(!response.ok) {
+    if(response.status === 404) {
+      notFound();
+    }
     return <div>오류가 발생했습니다 ...</div>
   }
 
