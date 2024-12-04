@@ -1,12 +1,17 @@
 import style from "./page.module.css";
 
+export function generateStaticParams() {
+  return [{ id: "1" },{ id: "2" },{ id: "3" }]
+}
+
 export default async function Page({
   params,
 }: {
-  params: { id: string | string[] };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`);
 
   if(!response.ok) {
     return <div>오류가 발생했습니다 ...</div>
@@ -15,7 +20,7 @@ export default async function Page({
   const book = await response.json();
 
   const {
-    id,
+    // id,
     title,
     subTitle,
     description,
