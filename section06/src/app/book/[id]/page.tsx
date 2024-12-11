@@ -15,7 +15,9 @@ async function BookDetail({
 }: {
   bookId: string;
 }) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${bookId}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${bookId}`,
+  );
 
   if(!response.ok) {
     if(response.status === 404) {
@@ -57,7 +59,8 @@ async function BookDetail({
 async function ReviewList({ bookId }: { bookId: string }) {
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/book/${bookId}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/book/${bookId}`,
+    { next: { tags: [`review-${bookId}`] } }
   );
 
   if(!response.ok) {
